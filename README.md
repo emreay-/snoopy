@@ -24,4 +24,4 @@ ros_control pkg: "sudo apt-get install ros-indigo-ros-control ros-indigo-ros-con
 ## Particle Filter Localization with *snoopy_localize*
 The PF localization system was tested in the maze environment for both global localization and pose tracking. The dead reck- oning system was also kept tracked to be compared. In the experiment, 2000 particles and every 8th range measurement were used. With this setup, the mean estimation rate was a lit- tle more than 3 Hz.
 * Detailed report on localization can be found [here.](https://github.com/emreay-/snoopy/blob/master/demos/Emre%20Ay%20-%20Implementing%20Particle%20Filter%20Localization%20on%20a%20Mobile%20Robot%20with%20ROS.pdf)
-![Alt Text](demos/pf_demo.gif)
+![Alt Text](https://github.com/emreay-/snoopy/blob/master/demos/pf_demo.gif)
