@@ -31,3 +31,8 @@ The PF localization system was tested in the maze environment for both global lo
 To navigate the robot to a desired location A\* is implemented. In the demo the code is running and giving a path from an origin to the clicked points on the map. 
 
 ![Alt Text](https://github.com/emreay-/snoopy/blob/master/demos/astar_demo.gif)
+
+## Map Exploration
+The explore service in *snoopy_setup* node was tracking the tiles in the map that were explored, and when called it was sampling a target point in the map from a uniform distribution that was lying between a minimum and maximum distance from the current position of the robot which was neither occupied nor explored. Exploration state was switching in *brain* node if there is an object detected from the vision or a collision is detected.
+
+![Alt Text](https://github.com/emreay-/snoopy/blob/master/demos/explore_demo.gif)
