@@ -1,0 +1,13 @@
+<launch>
+
+<rosparam file="$(find snoopy_setup)/all_parameters.yaml" command="load"/>
+
+<node pkg="snoopy_map" type="ogm_server" name="ogm_server" output="screen">
+
+<node pkg="snoopy_map" type="ogm_client" name="ogm_client" output="screen">
+	<rosparam file="$(find snoopy_setup)/ogm_client_parameters.yaml"/>
+</node>
+
+<node pkg="rviz" name="rviz" type="rviz" args="-d $(find snoopy_map)/gridMap.rviz" />
+
+</launch>

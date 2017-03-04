@@ -1,0 +1,75 @@
+<launch>
+
+<rosparam file="$(find snoopy_setup)/all_parameters.yaml" command="load"/>
+
+<node pkg="snoopy_setup" name="brain" type="brainFuck" output="screen"/>
+
+<node name="rplidarNode" pkg="rplidar_ros" type="rplidarNode" output="screen">
+	<param name="serial_port"         type="string" value="/dev/ttyUSB0"/>  
+	<param name="serial_baudrate"     type="int"    value="115200"/>
+	<param name="frame_id"            type="string" value="laser_frame"/>
+	<param name="inverted"            type="bool"   value="false"/>
+	<param name="angle_compensate"    type="bool"   value="true"/>
+</node>
+
+<node pkg="snoopy_setup" name="kinematics" type="kinematics" />
+
+<node pkg="phidgets" name="left_motor" type="motor">
+	<param name="serial" value="469404"/>
+	<param name="name" value="left_motor"/>
+</node>	
+
+<node pkg="phidgets" name="right_motor" type="motor">
+	<param name="serial" value="465530"/>
+	<param name="name" value="right_motor"/>
+</node>	
+
+<node name="controller_left" pkg="snoopy_control" type="pid_controller" output="screen">
+      <param name="Kp" value="1" />
+      <param name="Ki" value="0.2" />
+      <param name="Kd" value="0.05" />
+      <param name="setpoint_topic" value="setpoint_left" />
+      <param name="encoder_topic" value="left_motor/encoder" />
+      <param name="control_topic" value="left_motor/cmd_vel" />
+      <param name="error_topic" value="left_motor/err" />
+      <param name="est_topic" value="left_motor/est" />
+</node>
+
+<node name="controller_right" pkg="snoopy_control" type="pid_controller" output="screen">
+      <param name="Kp" value="1" />
+      <param name="Ki" value="0.2" />
+      <param name="Kd" value="0.05" />
+      <param name="setpoint_topic" value="setpoint_right" />
+      <param name="encoder_topic" value="right_motor/encoder" />
+      <param name="control_topic" value="right_motor/cmd_vel" />
+      <param name="error_topic" value="right_motor/err" />
+      <param name="est_topic" value="right_motor/est" />
+</node>
+
+<node pkg="snoopy_map" type="ogm_server" name="ogm_server" />
+
+<node pkg="snoopy_setup" name="tf_broadcaster" type="tf_broadcaster"/>
+
+<node pkg="snoopy_setup" name="laser_tf_listener" type="laser_tf_listener"/>
+
+<node pkg="snoopy_odom" name="dead_reck" type="dead_reck" />
+
+<node pkg="snoopy_localize" type="particleFilter4" name="particleFilter"/>
+
+<node pkg="snoopy_localize" name="pose_fusion" type="pose_fusion" output="screen"/>
+
+<node pkg="snoopy_navigate" name="navigate_action_server" type="navigate_action_server" output="screen"/>
+
+<node pkg="snoopy_pathfind" type="astar" name="astar" output="screen"/>
+
+<node pkg="snoopy_map" type="update_obstacle" name="update_obstacle" /> 
+
+<node pkg="snoopy_navigate" type="obstacle_avoidance" name="obstacle_avoidance" output="screen"/> 
+
+<node pkg="rviz" name="rviz" type="rviz" args="-d $(find snoopy_setup)/brain.rviz" />
+
+<!-- CAMERA STUFF 
+<include file="$(find snoopy_vision)/launch/obj_recognize.launch" />
+-->
+
+</launch>

@@ -1,0 +1,34 @@
+# TF Parameters
+# translations in milimeters
+# rotations in degrees
+# necessary conversion is being 
+# made in tf_broadcaster.cpp
+
+laser_tran_x: -55.0
+laser_tran_y: 0.0
+laser_tran_z: 135.0
+laser_rot_x: 0.0
+laser_rot_y: 0.0
+laser_rot_z: 180.0
+
+#camera_tran_x: 107.50
+#camera_tran_y: 0.0
+#camera_tran_z: 160.0
+#camera_rot_x: 135.0
+#camera_rot_y: 0.0
+#camera_rot_z: 90.0
+
+camera_tran_x: 107.50
+camera_tran_y: 0.0
+camera_tran_z: 140.0
+camera_rot_x: 0.0
+camera_rot_y: 30.0
+camera_rot_z: 0.0
+
+arm_tran_x: 0.0
+arm_tran_y: 0.0
+arm_tran_z: 170.0
+arm_rot_x: 0.0
+arm_rot_y: 0.0
+arm_rot_z: 0.0
+

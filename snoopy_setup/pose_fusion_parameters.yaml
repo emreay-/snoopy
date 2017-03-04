@@ -1,0 +1,7 @@
+do_fusion: true
+update_x_threshold: 0.5
+update_y_threshold: 0.5
+update_theta_threshold: 2.0
+init_x: 0.3
+init_y: 0.25
+init_theta: 0.0

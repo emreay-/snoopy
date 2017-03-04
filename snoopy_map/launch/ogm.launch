@@ -1,0 +1,15 @@
+<launch>
+
+<rosparam file="$(find snoopy_setup)/all_parameters.yaml" command="load"/>
+
+<node pkg="snoopy_map" type="ogm_server" name="ogm_server" output="screen"/>
+
+<node pkg="tf" type="static_transform_publisher" name="stat" args="0 0 0 0 0 0 1 map odom 100" />
+
+<node pkg="ras_maze_map" type="ras_maze_map_node" name="ras_maze">
+	<param name="map_file" value="/home/ras23/catkin_ws/src/snoopy/snoopy_localize/new_maze.txt" />
+</node>
+
+<node pkg="rviz" name="rviz" type="rviz" args="-d $(find snoopy_map)/gridMap.rviz" />
+
+</launch>

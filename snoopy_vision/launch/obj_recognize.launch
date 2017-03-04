@@ -1,0 +1,57 @@
+<launch>
+
+<include file="$(find realsense_camera)/launch/sr300_nodelet_rgbd.launch" />
+
+<node pkg="snoopy_vision" name="preproc" type="preprocess" >
+
+	<param name="modelss" value="0.005" />
+	<param name="sceness" value="0.01" />
+
+	<param name="rfrad_mod" value="0.009" />
+	<param name="rfrad_scene" value="0.01" />
+
+	<param name="descrad_mod" value="0.009" />
+	<param name="descrad_scene" value="0.01" />
+
+	<param name="cgsize" value="0.1" />
+	<param name="cgthresh" value="10.0" />
+	<param name="kneigh" value="15.0" />
+
+	<param name="debug_sph_rad" value=".001" />
+</node>
+
+<node pkg="ras_espeak" name="espeak" type="espeak_node" />
+
+<node pkg="snoopy_vision" name="Object_Identification" type="ident_obj" output="screen" >
+	<!-- RED —> 
+	<param name="rmin" value="50" />
+	<param name="rmax" value="255" />
+	<param name="gmin" value="1" />
+	<param name="gmax" value="45" />
+	<param name="bmin" value="1" />
+	<param name="bmax" value="25" />
+	<!-- BLUE —>
+	<param name="rminb" value="0" />
+	<param name="rmaxb" value="138" />
+	<param name="gminb" value="0" />
+	<param name="gmaxb" value="155" />
+	<param name="bminb" value="31" />
+	<param name="bmaxb" value="155" />
+	<!-- RED-->
+	<param name=“hmin" value="0" />
+	<param name=“hmax" value="138" />
+	<param name=“smin" value="0" />
+	<param name=“smax" value="155" />
+	<param name=“vmin" value="31" />
+	<param name=“vmax" value="155" />
+</node>
+
+<node pkg="snoopy_setup" name="camera_tf_listener" type="camera_tf_listener"/>
+
+<!-- <node pkg="snoopy_setup" name="tf_broadcaster" type="tf_broadcaster">
+		<rosparam file="$(find snoopy_setup)/tf_parameters.yaml" />
+</node> 
+-->
+
+
+</launch>

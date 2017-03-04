@@ -1,0 +1,4 @@
+geometry_msgs/Pose2D update_cell
+std_msgs/String cmd
+---
+nav_msgs/OccupancyGrid map

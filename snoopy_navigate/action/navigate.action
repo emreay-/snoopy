@@ -1,0 +1,8 @@
+#goal definition
+nav_msgs/Path path
+---
+#result definition
+geometry_msgs/Pose2D stop_point
+---
+#feedback
+geometry_msgs/Pose2D[] sequence

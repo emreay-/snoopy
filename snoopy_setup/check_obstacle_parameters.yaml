@@ -1,0 +1,4 @@
+#keep scan topic as "scan"
+#code converts it with a listener
+scan_topic: "/scan"
+check_radius: 0.6

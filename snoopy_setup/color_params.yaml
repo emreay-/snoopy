@@ -1,0 +1,20 @@
+hmin: 0
+hmax: 40
+smin: 90
+smax: 255
+vmin: 0
+vmax: 255
+
+hminb: 180
+hmaxb: 270
+
+hming: 84
+hmaxg: 170
+
+hminy: 28
+hmaxy: 72
+sminy: 205
+smaxy: 255
+vminy: 0
+vmaxy: 255
+

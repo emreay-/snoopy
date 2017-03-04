@@ -1,0 +1,49 @@
+<robot name="snoopy">
+    <link name="base_link">
+        <visual>
+            <geometry>
+                <box size="0.30 .25 .40"/>
+            </geometry>
+            <origin rpy="0 0 0" xyz="0 0 0.05"/>
+            <material name="gray">
+                <color rgba="0 0 0 0.6"/>
+            </material>
+        </visual>
+    </link>
+
+    <link name="wheel_left">
+        <visual>
+            <geometry>
+                <cylinder length="0.01" radius="0.036125"/>
+            </geometry>
+            <origin rpy="1.57079633 0 0" xyz="0 -0.13 0.05"/>
+            <material name="black">
+                <color rgba="1 0 0 1"/>
+            </material>
+        </visual>
+    </link>
+
+    <link name="wheel_right">
+        <visual>
+            <geometry>
+                <cylinder length="0.01" radius="0.1"/>
+            </geometry>
+            <origin rpy="1.57079633 0 0" xyz="0 0.13 0.05"/>
+            <material name="black"/>
+        </visual>
+    </link>
+
+    <joint name="base_to_wheel_left" type="continuous">
+        <parent link="base_link"/>
+        <child link="wheel_left"/>
+        <origin xyz="0 -0.13 0.05"/>
+        <axis xyz="1 0 0"/>
+    </joint>
+
+    <joint name="base_to_wheel_right" type="continuous">
+        <parent link="base_link"/>
+        <child link="wheel_right"/>
+        <origin xyz="0 0.13 0.05"/>
+        <axis xyz="1 0 0"/>
+    </joint>
+</robot>

@@ -1,0 +1,142 @@
+brain:
+  init_sleep: 5
+#___________________________________________________________________________
+
+explore:
+  x_explore: 1.0
+  y_explore: 1.0
+  explore_boundary: 2.0
+  significant_change: 0.2
+
+#___________________________________________________________________________
+
+dead_reck:
+  init_pose_x: 2.15
+  init_pose_y: 2.15
+  init_pose_th: -90.0
+
+particleFilter:
+  number_of_particles: 2000
+  process_sigma_lin: 0.01
+  process_sigma_ang: 0.05
+  measurement_sigma: 0.05
+  scan_topic: "/scan_converted"
+  pf_output_topic: "/snoopy/particle_filter/pose_est"
+  laser_angle_inc: 8
+  angle_offset: -5.0
+
+  map_file: "/home/ras23/catkin_ws/src/snoopy/snoopy_localize/new_maze.txt"
+  #map_file: "/home/ras23/catkin_ws/src/snoopy/snoopy_map/contest_rehearsal_maze.txt"
+  #map_file: "/home/ras23/catkin_ws/src/snoopy/snoopy_map/contest_maze_2016.txt"
+
+  init_uniform: false
+  init_pose_x: 2.15
+  init_pose_y: 2.15
+  init_pose_th: -90.0
+
+  init_sigma_x: 0.01
+  init_sigma_y: 0.01
+  init_sigma_th: 0.005
+
+pose_fusion:
+  do_fusion: false
+  fuse_type: "ALL"
+  update_x_threshold: 0.05
+  update_y_threshold: 0.05
+  update_theta_threshold: 15.0
+  
+  init_x: 0.3
+  init_y: 0.7
+  init_theta: 0.0
+
+#___________________________________________________________________________
+
+navigate_action_server:
+  position_topic: /snoopy/pose_fusion
+  angular_limit: 0.5
+  linear_limit: 0.2
+  kp_angular: 1
+  kp_angular2: 0.7
+  kp_linear: 0.4
+  pre_update_type: "FIRST"
+  pre_update: true
+  fuse_switch: true
+  conv_time: 3.0
+
+ogm_server:
+  frame_id: "odom"
+  header_seq: 1
+  map_origin_x: 0.0
+  map_origin_y: 0.0
+  map_yaw: 0.0
+  cell_occ_value: 100
+  dilate_radius: 0.12
+  grid_map_topic: "grid_map"
+
+  map_file: "/home/ras23/catkin_ws/src/snoopy/snoopy_localize/new_maze.txt"
+  #map_file: "/home/ras23/catkin_ws/src/snoopy/snoopy_map/contest_rehearsal_maze.txt"
+  #map_file: "/home/ras23/catkin_ws/src/snoopy/snoopy_map/contest_maze_2016.txt"
+  output_file: "/home/ras23/catkin_ws/src/snoopy/snoopy_map/out_map.txt"
+  
+  cell_size: 0.03
+
+#___________________________________________________________________________
+
+#This is the obstacle update for MAP
+update_obstacle:
+#keep scan topic as "scan"
+#code converts it with a listener
+  scan_topic: "/scan"
+  check_radius: 0.6
+  range_min: 0.2  #min range to start checking, in order to avoid bolts etc.
+
+#Obstacle collision avoidance
+obstacle_avoidance:
+  ahead: 0.35
+  delta_t: 0.5
+  avoid_topic: "/snoopy/collision"
+
+#___________________________________________________________________________
+
+astar:
+  astar_service: astar_srv
+  costmap_sigma: 3.0
+  costmap_kernel_size: 5
+  cost_gain: 15
+
+#___________________________________________________________________________
+
+tf_broadcaster:
+# TF Parameters
+# translations in milimeters
+# rotations in degrees
+# necessary conversion is being 
+# made in tf_broadcaster.cpp
+
+  laser_tran_x: -55.0
+  laser_tran_y: 0.0
+  laser_tran_z: 135.0
+  laser_rot_x: 0.0
+  laser_rot_y: 0.0
+  laser_rot_z: 180.0
+
+  camera_tran_x: 107.50
+  camera_tran_y: 0.0
+  camera_tran_z: 140.0
+  camera_rot_x: 0.0
+  camera_rot_y: 30.0
+  camera_rot_z: 0.0
+
+  arm_tran_x: 0.0
+  arm_tran_y: 0.0
+  arm_tran_z: 170.0
+  arm_rot_x: 0.0
+  arm_rot_y: 0.0
+  arm_rot_z: 0.0
+
+#___________________________________________________________________________
+
+
+
+
+

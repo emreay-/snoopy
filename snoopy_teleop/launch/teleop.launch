@@ -1,0 +1,38 @@
+<launch>
+<node pkg="snoopy_teleop" name="keyboard_control" type="keyboard_twist_pid.py" />
+
+<node pkg="snoopy_setup" name="kinematics" type="kinematics" />
+
+<node pkg="phidgets" name="left_motor" type="motor">
+	<param name="serial" value="469404"/>
+	<param name="name" value="left_motor"/>
+</node>	
+
+<node pkg="phidgets" name="right_motor" type="motor">
+	<param name="serial" value="465530"/>
+	<param name="name" value="right_motor"/>
+</node>	
+
+<node name="controller_left" pkg="snoopy_control" type="pid_controller" output="screen"  >
+      <param name="Kp" value="1" />
+      <param name="Ki" value="0.2" />
+      <param name="Kd" value="0.05" />
+      <param name="setpoint_topic" value="setpoint_left" />
+      <param name="encoder_topic" value="left_motor/encoder" />
+      <param name="control_topic" value="left_motor/cmd_vel" />
+      <param name="error_topic" value="left_motor/err" />
+      <param name="est_topic" value="left_motor/est" />
+</node>
+
+<node name="controller_right" pkg="snoopy_control" type="pid_controller" output="screen" >
+      <param name="Kp" value="1" />
+      <param name="Ki" value="0.2" />
+      <param name="Kd" value="0.05" />
+      <param name="setpoint_topic" value="setpoint_right" />
+      <param name="encoder_topic" value="right_motor/encoder" />
+      <param name="control_topic" value="right_motor/cmd_vel" />
+      <param name="error_topic" value="right_motor/err" />
+      <param name="est_topic" value="right_motor/est" />
+</node>
+
+</launch>

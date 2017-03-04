@@ -1,0 +1,17 @@
+<launch>
+
+<node pkg="phidgets" name="left_motor" type="motor">
+	<param name="serial" value="469404"/>
+	<param name="name" value="left_motor"/>
+</node>	
+
+<node pkg="phidgets" name="right_motor" type="motor">
+	<param name="serial" value="465530"/>
+	<param name="name" value="right_motor"/>
+</node>	
+
+<node pkg="snoopy_teleop" name="keyboard_control" type="keyboard_twist.py" />
+<node pkg="snoopy_teleop" name="snoopy_teleop" type="snoopy_teleop" />
+
+
+</launch>

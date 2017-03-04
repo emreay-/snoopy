@@ -1,0 +1,6 @@
+<launch> 
+
+<node pkg="snoopy_uarm" name="uarm_pick_server" type="uarm_pick_server" >
+</node>
+
+</launch>

@@ -1,0 +1,4 @@
+---
+geometry_msgs/PointStamped position
+std_msgs/String object
+std_msgs/Bool pickup

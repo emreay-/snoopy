@@ -1,0 +1,14 @@
+<launch>
+
+<include file="$(find realsense_camera)/launch/sr300_nodelet_rgbd.launch" />
+
+<node pkg="snoopy_vision" name="snoopy_qr" type="snoopy_qr" output="screen" />
+
+<node pkg="snoopy_setup" name="camera_tf_listener" type="camera_tf_listener"/>
+
+<node pkg="snoopy_setup" name="tf_broadcaster" type="tf_broadcaster">
+	
+	<rosparam file="$(find snoopy_setup)/tf_parameters.yaml" />
+</node>
+
+</launch>

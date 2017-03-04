@@ -1,0 +1,17 @@
+number_of_particles: 2000
+process_sigma_lin: 0.01
+process_sigma_ang: 0.05
+measurement_sigma: 0.05
+scan_topic: "/scan_converted"
+pf_output_topic: /snoopy/particle_filter/pose_est
+grid_occ_value: 100
+laser_angle_inc: 8
+angle_offset: -5.0
+map_file: "/home/ras23/catkin_ws/src/snoopy/snoopy_localize/new_maze.txt"
+init_uniform: false
+init_pose_x: 0.3
+init_pose_y: 0.25
+init_pose_th: 0.0
+init_sigma_x: 0.01
+init_sigma_y: 0.01
+init_sigma_th: 0.005

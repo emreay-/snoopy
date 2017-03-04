@@ -1,0 +1,31 @@
+<launch>
+
+<include file="$(find realsense_camera)/launch/sr300_nodelet_rgbd.launch" />
+
+<node pkg="snoopy_vision" name="preproc" type="preprocess"   output="screen">
+
+	<rosparam file="$(find snoopy_setup)/shape_params.yaml" />
+
+	<param name="operate_var" value="only vision" />
+</node>
+
+<node pkg="ras_espeak" name="espeak" type="espeak_node" />
+
+<node pkg="snoopy_vision" name="Object_Identification" type="ident_obj">
+
+	<rosparam file="$(find snoopy_setup)/color_params.yaml" />
+
+</node>
+
+<node pkg="snoopy_setup" name="camera_tf_listener" type="camera_tf_listener"/>
+
+<node pkg="snoopy_setup" name="tf_broadcaster" type="tf_broadcaster">
+	
+	<rosparam file="$(find snoopy_setup)/tf_parameters.yaml" />
+
+</node> 
+
+<node pkg="rviz" name="rviz" type="rviz" args="-d $(find snoopy_vision)/pcl_rviz.rviz" /> 
+
+
+</launch>

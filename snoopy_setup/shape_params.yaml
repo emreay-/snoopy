@@ -1,0 +1,18 @@
+modelss:       0.005
+sceness:       0.006
+
+rfrad_mod:     0.009
+rfrad_scene:   0.009
+
+descrad_mod:   0.009
+descrad_scene: 0.009
+
+# CUBE WORKS FOR CGSIZE 0.1
+
+cgsize:        0.5
+cgthresh:      5
+kneigh:        10
+neigh_dist:    0.15
+
+debug_sph_rad: 0.001
+

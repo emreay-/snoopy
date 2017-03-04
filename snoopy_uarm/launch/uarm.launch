@@ -1,0 +1,11 @@
+<launch> 
+
+<node pkg="uarm" name="kth_uarm_core" type="kth_uarm_core.py" />
+
+<node pkg="snoopy_uarm" name="uarm_pick_server" type="uarm_pick_server" >
+	<param name="x" value="10" />
+	<param name="y" value="10" />
+	<param name="z" value="15" />
+</node>
+
+</launch>
