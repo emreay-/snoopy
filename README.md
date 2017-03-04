@@ -1,7 +1,8 @@
 Metapackage for the custom mobile robot called "Snoopy". Snoopy was equipped with a LIDAR, an RGB-D camera, motor encoders and a uArm. 
 
-![demo](demos/render.png)
-![demo](demos/robot.jpg)
+<img src="https://github.com/emreay-/snoopy/blob/master/demos/render.png" width="300"> <img src="https://github.com/emreay-/snoopy/blob/master/demos/robot.jpg" width="300"> 
+
+
 
 ## Necessary packages to build the package
 ros_control pkg: "sudo apt-get install ros-indigo-ros-control ros-indigo-ros-controllers"
