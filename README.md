@@ -18,8 +18,10 @@ Metapackage for the custom mobile robot called "Snoopy". Snoopy was equipped wit
 
 
 ## Necessary packages to build the package
-ros_control pkg: "sudo apt-get install ros-indigo-ros-control ros-indigo-ros-controllers"
-
+ros_control pkg: 
+```
+  sudo apt-get install ros-indigo-ros-control ros-indigo-ros-controllers
+```
 #Demos 
 ## Particle Filter Localization with *snoopy_localize*
 The PF localization system was tested in the maze environment for both global localization and pose tracking. The dead reck- oning system was also kept tracked to be compared. In the experiment, 2000 particles and every 8th range measurement were used. With this setup, the mean estimation rate was a lit- tle more than 3 Hz.
